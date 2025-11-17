@@ -11,9 +11,7 @@ description: "Convert audio to text using Waves Lightning ASR. This endpoint sup
 
 ## Required Headers
 
----
-
-<ParamField query="Authorization" path="param" body="body" header="Authorization" type="string<bearer>" required={false} placeholder="ph">
+<ParamField query="Authorization" path="param" body="body" header="Authorization" type="string<bearer>" required="false" placeholder="ph">
   API key authentication using Bearer token format.
 </ParamField>
 
@@ -150,6 +148,8 @@ try {
 <Tip>
   Use raw audio (`application/octet-stream`) for low-latency workflows. Use the JSON `{ "url": "…" }` method for batch or remote processing. Max file size ~25MB
 </Tip>
+
+---
 
 | |
 | --- |
