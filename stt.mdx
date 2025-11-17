@@ -13,7 +13,107 @@ Convert audio to text using **Waves** **Lightning ASR**. This endpoint supports 
 
 POST https://waves-api.smallest.ai/api/v1/lightning/get_text
 
+/
+
 ## Required headers
+
+<ParamField query="Authorization" path="param" body="body" header="Authorization" default="def" type="string<bearer>" required placeholder="ph">
+  API key authentication using Bearer token format.
+</ParamField>
+
+<ParamField query="file" path="file" header="file" required>
+  **Supported format:**\
+  `Raw audio bytes` Content-Type header should specify the audio format (e.g., audio/wav, audio/mp3). All parameters are passed as query parameters.
+
+  `url ` URL to the audio file to transcribe. Must be publicly accessible
+</ParamField>
+
+<RequestExample>
+
+```bash cURL
+curl --request POST \
+  --url https://waves-api.smallest.ai/api/v1/lightning/get_text \
+  --header 'Authorization: Bearer <token>' \
+  --header 'Content-Type: application/octet-stream'
+```
+
+
+```python Python expandable
+import requests
+
+url = "https://waves-api.smallest.ai/api/v1/lightning/get_text"
+
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/octet-stream"
+}
+
+response = requests.post(url, headers=headers)
+
+print(response.json())
+```
+
+
+```javascript Javascript
+const url = 'https://waves-api.smallest.ai/api/v1/lightning/get_text';
+const options = {
+  method: 'POST',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/octet-stream'},
+  body: undefined
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json json
+{
+  "status": "success",
+  "transcription": "Hello world.",
+  "word_timestamps": [
+    {
+      "word": "Hello",
+      "start": 0,
+      "end": 0.5
+    },
+    {
+      "word": "world.",
+      "start": 0.6,
+      "end": 0.9
+    }
+  ],
+  "age": "adult",
+  "gender": "male",
+  "emotions": {
+    "happiness": 0.8,
+    "sadness": 0.15,
+    "disgust": 0.02,
+    "fear": 0.03,
+    "anger": 0.05
+  },
+  "metadata": {
+    "filename": "audio.mp3",
+    "duration": 1.7,
+    "fileSize": 1000000
+  }
+}
+```
+
+</ResponseExample>
+
+<Tip>
+  Use raw audio (`application/octet-stream`) for low-latency workflows. Use the JSON `{ "url": "…" }` method for batch or remote processing. Max file size ~25MB
+</Tip>
+
 
 | |
 | --- |
