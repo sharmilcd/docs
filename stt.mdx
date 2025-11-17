@@ -1,11 +1,7 @@
 ---
-title: "STT Quickstart"
-description: "One-page Speech-to-Text documentation"
+title: "Speech-to-Text (STT) — Quickstart"
+description: "Convert audio to text using Waves Lightning ASR. This endpoint supports raw audio bytes or public audio URLs, automatic language detection (30+ languages), and optional word-level timestamps."
 ---
-
-# Speech-to-Text (STT) — Quickstart
-
-Convert audio to text using **Waves** **Lightning ASR**. This endpoint supports raw audio bytes or public audio URLs, automatic language detection (30+ languages), and optional word-level timestamps.
 
 ## Endpoint
 
@@ -13,14 +9,16 @@ Convert audio to text using **Waves** **Lightning ASR**. This endpoint supports 
   `POST `https://waves-api.smallest.ai/api/v1/lightning/get_text
 </Info>
 
-> ## Required headers
+## Required Headers
 
 <ParamField query="Authorization" path="param" body="body" header="Authorization" default="def" type="string<bearer>" required placeholder="ph">
   API key authentication using Bearer token format.
 </ParamField>
 
 <ParamField query="file" path="file" header="file" required>
-  **Supported format:**\
+  **Supported format:**
+
+  \
   `Raw audio bytes` Content-Type header should specify the audio format (e.g., audio/wav, audio/mp3). All parameters are passed as query parameters.
 
   `url ` URL to the audio file to transcribe. Must be publicly accessible
@@ -146,6 +144,7 @@ try {
 <Tip>
   Use raw audio (`application/octet-stream`) for low-latency workflows. Use the JSON `{ "url": "…" }` method for batch or remote processing. Max file size ~25MB
 </Tip>
+
 
 | |
 | --- |
