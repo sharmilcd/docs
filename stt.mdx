@@ -6,7 +6,17 @@ description: "Convert audio to text using Waves Lightning ASR. This endpoint sup
 ## Endpoint
 
 <Info>
-  `POST `https://waves-api.smallest.ai/api/v1/lightning/get_text
+  \<Endpoint
+
+    method="POST"
+
+    url="https://waves-api.smallest.ai/api/v1/lightning/get_text"
+
+  /\>
+</Info>
+
+<Info>
+  `POST ` /api/v1/lightning/get_text
 </Info>
 
 ## Required Headers
@@ -15,7 +25,7 @@ description: "Convert audio to text using Waves Lightning ASR. This endpoint sup
   API key authentication using Bearer token format.
 </ParamField>
 
-<ParamField query=" model" path="file" body="body" header="file" default="lightning" type="enum<string>" required placeholder="ph">
+<ParamField query=" model" path="file" body="body" header="file" type="enum<string>" required placeholder="ph">
   The ASR model to use for transcription
 
   Available options: `lightning`
