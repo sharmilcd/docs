@@ -1,5 +1,5 @@
 ---
-title: "Speech-to-Text (STT) — Quickstart"
+title: "STT — Quickstart"
 description: "Convert audio to text using Waves Lightning ASR. This endpoint supports raw audio bytes or public audio URLs, automatic language detection (30+ languages), and optional word-level timestamps."
 ---
 
@@ -15,10 +15,14 @@ description: "Convert audio to text using Waves Lightning ASR. This endpoint sup
   API key authentication using Bearer token format.
 </ParamField>
 
-<ParamField query="file" path="file" header="file" required>
-  **Supported format:**
+<ParamField query=" model" path="file" body="body" header="file" default="def" type="enum<string>" required placeholder="ph">
+  The ASR model to use for transcription
 
-  \
+  Available options: `lightning`
+</ParamField>
+
+<ParamField query="file" path="file" header="file" required>
+  **Supported format:**\
   `Raw audio bytes` Content-Type header should specify the audio format (e.g., audio/wav, audio/mp3). All parameters are passed as query parameters.
 
   `url ` URL to the audio file to transcribe. Must be publicly accessible
@@ -144,7 +148,6 @@ try {
 <Tip>
   Use raw audio (`application/octet-stream`) for low-latency workflows. Use the JSON `{ "url": "…" }` method for batch or remote processing. Max file size ~25MB
 </Tip>
-
 
 | |
 | --- |
