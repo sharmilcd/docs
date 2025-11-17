@@ -13,11 +13,11 @@ description: "Convert audio to text using Waves Lightning ASR. This endpoint sup
 
 ---
 
-<ParamField query="Authorization" path="param" body="body" header="Authorization" default="def" type="string<bearer>" required placeholder="ph">
+<ParamField query="Authorization" path="param" body="body" header="Authorization" type="string<bearer>" required={false} placeholder="ph">
   API key authentication using Bearer token format.
 </ParamField>
 
-<ParamField query=" model" path="file" body="body" header="file" default="def" type="enum<string>" required placeholder="ph">
+<ParamField query=" model" path="file" body="body" header="file" default="lightning" type="enum<string>" required placeholder="ph">
   The ASR model to use for transcription
 
   Available options: `lightning`
